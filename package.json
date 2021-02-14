@@ -1,0 +1,32 @@
+{
+  "name": "create-nuxt-typescript-component",
+  "version": "0.0.1",
+  "description": "creates new typescript components for nuxt (like Angular component)",
+  "main": "bin.js",
+  "dependencies": {
+    "minimist": "^1.1.0",
+    "pascalcase": "^1.0.0",
+    "kebab-case": "^1.0.0",
+    "ncp": "^2.0.0",
+    "replace-in-file": "^5.0.2",
+    "edit-json-file": "^1.4.0",
+    "tar-fs": "^0.5.0"
+  },
+  "devDependencies": {},
+  "bin": {
+    "create-ntc": "./bin.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kakiman/create-nuxt-typescript-component"
+  },
+  "keywords": [
+    "create",
+    "project",
+    "scaffold",
+    "template",
+    "templating"
+  ],
+  "author": "Aurélien Duriez",
+  "license": "WTFPL"
+}
