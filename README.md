@@ -13,22 +13,28 @@ npm install -g create-nuxt-typescript-component
 This script allows you to create a new Typescript component (page / component / layout) based on [nuxt-property-decorator](https://www.npmjs.com/package/nuxt-property-decorator) in the style of an Angular component
 
 The following syntaxe is by default to create a new component :
+*is optional* , __isKeyword__
 
-```
-create-ntc component-name
-```
+<pre>
+npx create-ntc component-name <i>parent-folder-path</i>
+</pre>
+
+or with the complete sentence :
+
+<pre>
+npx create-ntc <b>component</b> component-name <i>parent-folder-path</i>
+</pre>
 
 you can also use it to create a new page this following syntaxe :
 
-```
-create-ntc page page-name parent-folder-path(optional)
-```
+<pre>
+npx create-ntc <b>page</b> page-name <i>parent-folder-path</i>
+</pre>
 
 or layout :
-
-```
-create-ntc layout layout-name parent-folder-path(optional)
-```
+<pre>
+npx create-ntc <b>layout</b> layout-name <i>parent-folder-path</i>
+</pre>
 
 ## Source Code
 
