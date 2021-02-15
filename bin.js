@@ -1,11 +1,10 @@
 #!/usr/bin/env node
-var tar = require('tar-fs')
-var fs = require('fs')
-var pascalcase = require('pascalcase');
-var kebabCase = require('kebab-case');
-var minimist = require('minimist');
-var replaceInFile = require('replace-in-file');
-var editJsonFile = require("edit-json-file");
+const tar = require('tar-fs')
+const fs = require('fs')
+const pascalcase = require('pascalcase');
+const kebabCase = require('kebab-case');
+const minimist = require('minimist');
+const replaceInFile = require('replace-in-file');
 
 var argv = minimist(process.argv.slice(2), {alias:{configure:'c'}, boolean:'c'})
 
