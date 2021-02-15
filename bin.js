@@ -97,8 +97,6 @@ var createfiles = function(){
   console.log('replace all default variables');
   replaceKeyInFile(replaceAtPath, files, pascalName, kebabName);
 
-  console.log('add it in parent index.ts file %', parentDirPath);
-  fs.appendFileSync(parentDirPath+'/'+INDEX_FILE, 'export { default as ' + pascalName + '} from "./'+ pascalName +'";');
   process.exit(0);
 }
 
