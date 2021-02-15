@@ -43,19 +43,13 @@ var replaceKeyInFile = function(atPath, filesPath, pascalName, kebabName){
   const by = [pascalName, kebabName, atPath];
   
   console.log('replaceKeyInFile');
-  console.log('replace : ');
-  console.log(replace);
-  console.log('by : ');
-  console.log(by);
+  console.log('by : ' + by);
   const options = {
     files: filesPath,
     from: replace,
     to: by,
   };
-  console.log('options : ');
-  console.log(options);
-  const results = replaceInFile.sync(options)
-  console.log(results);
+  replaceInFile.sync(options)
 }
 
 var createfiles = function(){
