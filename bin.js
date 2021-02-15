@@ -99,6 +99,7 @@ var createfiles = function(){
 
   console.log('add it in parent index.ts file %', parentDirPath);
   fs.appendFileSync(parentDirPath+'/'+INDEX_FILE, 'export { default as ' + pascalName + '} from "./'+ pascalName +'";');
+  process.exit(0);
 }
 
 var showHelp = function() {
