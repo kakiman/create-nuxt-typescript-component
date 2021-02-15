@@ -10,7 +10,7 @@ npm install -g create-nuxt-typescript-component
 
 ## it's you first time ?
 
-Une fois installé globalement sur votre ordinateur (étape précédente), le script vous permet de créer un nouveau composant Typescript (page/component/layout) basé sur nuxt-property-decorator dans le style d'un composant Angular
+This script allows you to create a new Typescript component (page / component / layout) based on [nuxt-property-decorator](https://www.npmjs.com/package/nuxt-property-decorator) in the style of an Angular component
 
 The following syntaxe is by default to create a new component :
 
@@ -33,16 +33,38 @@ create-ntc layout layout-name parent-folder-path(optional)
 ## Source Code
 
 ### Vue
-<%@include file="./SamplesFiles/Sample.vue"%>
+```vue  sample.vue
+<template lang="html" src="./SampleFileName.html"></template>
+<script lang="ts" src="./SampleFileName.ts" name="sample-name" />
+<style lang="scss" src="./SampleFileName.scss" />
+```
 
 ### Typescript
-<%@include file="./SamplesFiles/Sample.ts"%>
+```ts sample.ts
+import { Vue, Component } from 'nuxt-property-decorator'
+@Component({
+  name: 'sample-name'
+})
+export default class SampleName extends Vue {}
+```
 
 ### Template
-<%@include file="./SamplesFiles/Sample.html"%>
+```html sample.html
+<div>
+    I create my new  <span class="name">{{ $options.name }}</span>
+</div>
+```
 
 ### Style
-<%@include file="./SamplesFiles/Sample.scss"%>
+This is an empty file
+
+### index for typescript component import
+```ts index.ts
+import SampleName from './SampleFileName'
+
+export default SampleName
+```
+
 
 ## License
 WTFPL (auteur initial : Aurélien Duriez)
