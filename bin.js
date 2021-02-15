@@ -64,7 +64,7 @@ var createfiles = function(){
 
   if (!fs.existsSync(dirName)){
     console.log('Creating folder %s', dirName);
-    fs.mkdirSync(dirName);
+    fs.mkdirSync(dirName, {recursive: true});
   }
 
   var stylePath = dirName+'/'+ pascalName + STYLE_EXT
