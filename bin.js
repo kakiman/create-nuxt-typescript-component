@@ -37,7 +37,7 @@ var kebabName = '';
 var dirName = '';
 var parentDirPath = '';
 var replaceAtPath = '';
-var optionalPath = '';
+var optionalPath;
 
 var replaceKeyInFile = function(atPath, filesPath, pascalName, kebabName){
   const replace = [REPLACE_PASCAL_STR, REPLACE_KEBAB_STR, REPLACE_PATH_STR];
@@ -109,23 +109,23 @@ var switchFolder = function(folder){
   switch(folder){
     case 'page':
       console.log('Creating new page %s', name);
-      parentDirPath += PAGE_PATH + (optionalPath)? '/'+ optionalPath : '';
+      parentDirPath += PAGE_PATH + optionalPath;
       dirName = parentDirPath +'/'+pascalName;
-      replaceAtPath += PAGE_PATH + (optionalPath)? '/'+ optionalPath : '';
+      replaceAtPath += PAGE_PATH + optionalPath;
       createfiles();
       break;
     case 'layout':
       console.log('Creating new layout %s', name);
-      parentDirPath += LAYOUT_PATH+ (optionalPath)? '/'+ optionalPath : '';
+      parentDirPath += LAYOUT_PATH + optionalPath;
       dirName = parentDirPath +'/'+pascalName;
-      replaceAtPath += LAYOUT_PATH+ (optionalPath)? '/'+ optionalPath : '';
+      replaceAtPath += LAYOUT_PATH + optionalPath;
       createfiles()
       break;
     default:
       console.log('Creating new component %s', name);
-      parentDirPath += COMPONENT_PATH + (optionalPath)? '/'+ optionalPath : '';
+      parentDirPath += COMPONENT_PATH + optionalPath;
       dirName = parentDirPath +'/'+pascalName;
-      replaceAtPath += COMPONENT_PATH + (optionalPath)? '/'+ optionalPath : '';
+      replaceAtPath += COMPONENT_PATH + optionalPath;
       createfiles();
       break;
   }
@@ -154,6 +154,7 @@ if(argv._[0] == null){
   }
   pascalName = pascalcase(name);
   kebabName = kebabCase(name).substr(0);
+  optionalPath = (typeof optionalPath !== 'undefined')? '/'+ optionalPath : ''
   parentDirPath = DOT;
   replaceAtPath = AT;
   switchFolder(type);
