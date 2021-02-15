@@ -10,8 +10,8 @@ var argv = minimist(process.argv.slice(2), {alias:{configure:'c'}, boolean:'c'})
 
 const REPLACE_PASCAL_STR = /_SamplePascalName_/g;
 const REPLACE_KEBAB_STR = /_SampleKebabName_/g;
+const REPLACE_FILE_STR = /_SampleFileName_/g;
 const REPLACE_PATH_STR = /_PATH_/g;
-
 const STYLE_EXT = ".scss";
 const SCRIPT_EXT = ".ts";
 const TEMPLATE_EXT = ".html";
@@ -37,10 +37,16 @@ var dirName = '';
 var parentDirPath = '';
 var replaceAtPath = '';
 var optionalPath;
+var isUnderName = false;
 
 var replaceKeyInFile = function(atPath, filesPath, pascalName, kebabName){
-  const replace = [REPLACE_PASCAL_STR, REPLACE_KEBAB_STR, REPLACE_PATH_STR];
-  const by = [pascalName, kebabName, atPath];
+  const replace = [REPLACE_FILE_STR, REPLACE_PASCAL_STR, REPLACE_KEBAB_STR, REPLACE_PATH_STR];
+  var by = []
+  if(isUnderName){
+    by = [name, pascalName, kebabName, atPath];
+  } else {
+    by = [pascalName, pascalName, kebabName, atPath];
+  }
   
   console.log('replaceKeyInFile');
   console.log('by : ' + by);
@@ -64,8 +70,15 @@ var createfiles = function(){
   var scriptPath = dirName+'/'+ pascalName + SCRIPT_EXT
   var templatePath = dirName+'/'+ pascalName + TEMPLATE_EXT
   var vuePath = dirName+'/'+ pascalName + VUE_EXT
-  var indexPath = dirName+'/'+ INDEX_FILE;  
 
+  if(isUnderName){
+    var stylePath = dirName+'/'+ name + STYLE_EXT
+    var scriptPath = dirName+'/'+ name + SCRIPT_EXT
+    var templatePath = dirName+'/'+ name + TEMPLATE_EXT
+    var vuePath = dirName+'/'+ name + VUE_EXT
+  }
+  var indexPath = dirName+'/'+ INDEX_FILE;
+  
   console.log('Creating style (.scss) file');
   fs.copyFileSync(SAMPLES_STYLE_FILE, stylePath );
   files.push(stylePath);
@@ -104,6 +117,12 @@ var switchFolder = function(folder){
       console.log('Creating new page %s', name);
       parentDirPath += PAGE_PATH + optionalPath;
       dirName = parentDirPath +'/'+pascalName;
+      if(isUnderName){
+        dirName = parentDirPath+'/'+name;
+        name = 'index';
+      } else {
+        dirName = parentDirPath +'/'+pascalName;
+      }
       replaceAtPath += PAGE_PATH + optionalPath;
       createfiles();
       break;
@@ -144,10 +163,14 @@ if(argv._[0] == null){
       optionalPath = argv._[1]
     }
   }
+  isUnderName = name.startsWith('_')
+  if(isUnderName && optionalPath){
+      pascalName = pascalcase(optionalPath+ name);
+  } else {
+    pascalName = pascalcase(name);
   }
-  pascalName = pascalcase(name);
-  kebabName = kebabCase(name).substr(0);
   optionalPath = (typeof optionalPath !== 'undefined')? '/'+ optionalPath : ''
+  kebabName = kebabCase(pascalName).replace('-','');
   parentDirPath = DOT;
   replaceAtPath = AT;
   switchFolder(type);
