@@ -88,9 +88,11 @@ var createfiles = function(){
   fs.copyFileSync(SAMPLES_VUE_FILE, vuePath);
   files.push(vuePath);
 
-  console.log('Creating index.ts file');
-  fs.copyFileSync(SAMPLES_INDEX_FILE, indexPath);
-  files.push(indexPath);
+  if(type !== 'page'){
+    console.log('Creating index.ts file');
+    fs.copyFileSync(SAMPLES_INDEX_FILE, indexPath);
+    files.push(indexPath);
+  }
 
   console.log('replace all default variables');
   replaceKeyInFile(replaceAtPath, files, pascalName, kebabName);
