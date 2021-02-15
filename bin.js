@@ -71,7 +71,6 @@ var createfiles = function(){
   var templatePath = dirName+'/'+ pascalName + TEMPLATE_EXT
   var vuePath = dirName+'/'+ pascalName + VUE_EXT
   var indexPath = dirName+'/'+ INDEX_FILE;  
-  testPath += pascalName + TEST_EXT;
 
   console.log('Creating style (.scss) file');
   fs.copyFileSync(SAMPLES_STYLE_FILE, stylePath );
