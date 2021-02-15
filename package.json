@@ -2,6 +2,22 @@
   "name": "create-nuxt-typescript-component",
   "version": "0.1.0",
   "description": "creates new typescript components for nuxt (like Angular component)",
+  "keywords": [
+    "create",
+    "project",
+    "scaffold",
+    "template",
+    "templating",
+    "nuxt",
+    "typescript",
+    "component"
+  ],
+  "private": false,
+  "homepage": "https://github.com/kakiman/create-nuxt-typescript-component",
+  "bugs": {
+    "url": "https://github.com/kakiman/create-nuxt-typescript-component/issues",
+    "email": "aurelien.duriez+npm@gmail.com"
+  },
   "main": "bin.js",
   "dependencies": {
     "minimist": "^1.1.0",
@@ -18,15 +34,8 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/kakiman/create-nuxt-typescript-component"
+    "url": "https://github.com/kakiman/create-nuxt-typescript-component.git"
   },
-  "keywords": [
-    "create",
-    "project",
-    "scaffold",
-    "template",
-    "templating"
-  ],
-  "author": "Aurélien Duriez",
+  "author": "Aurélien Duriez <aurelien.duriez+npm@gmail.com>",
   "license": "WTFPL"
 }
