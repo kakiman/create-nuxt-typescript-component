@@ -134,13 +134,23 @@ var switchFolder = function(folder){
 if(argv._[0] == null){
   showHelp();
 } else {
-  type = argv._[0]
-  optionalPath = argv._[2]
-  if(argv._[1] != null){
-    name = argv._[1]
+  if(argv._[0] == 'page' || argv._[0] == 'layout' || argv._[0] == 'component'){
+    type = argv._[0]
+    if(argv._[1]){
+      name = argv._[1]
+    } else {
+      showHelp();
+    }
+    if(argv._[2]){
+      optionalPath = argv._[2]
+    } 
   } else {
     type = 'component'
     name = argv._[0]
+    if(argv._[1]){
+      optionalPath = argv._[1]
+    }
+  }
   }
   pascalName = pascalcase(name);
   kebabName = kebabCase(name).substr(0);
