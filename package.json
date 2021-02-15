@@ -1,6 +1,6 @@
 {
   "name": "create-nuxt-typescript-component",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "creates new typescript components for nuxt (like Angular component)",
   "keywords": [
     "create",
@@ -30,7 +30,7 @@
   },
   "devDependencies": {},
   "bin": {
-    "create-ntc": "./bin.js"
+    "create-ntc": "bin.js"
   },
   "repository": {
     "type": "git",
